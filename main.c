@@ -20,7 +20,12 @@ char array[] = {
 int arrayLength = sizeof(array) / sizeof(char);
 
 void savePassword(char* str){
-    FILE* generatePasswordFile = fopen("password.txt", "w");
+    char* fileName = malloc(sizeof(char)*MAX_SIZE);
+
+    printf("Enter file name: ");
+    scanf("%s", fileName);
+
+    FILE* generatePasswordFile = fopen(fileName, "w");
 
     if(generatePasswordFile == NULL){
         printf("Can\'t create file. Try it again later");
@@ -29,7 +34,9 @@ void savePassword(char* str){
 
     fputs(str, generatePasswordFile);
     fclose(generatePasswordFile);
-    printf("Password saved successfully");
+    printf("Password saved successfully to %s\n", fileName);
+
+    free(fileName);
 }
 
 void askForExportPasswordToFile(char* str){
