@@ -25,6 +25,8 @@ void savePassword(char* str){
     printf("Enter file name: ");
     scanf("%s", fileName);
 
+    strcat(fileName, ".txt");
+
     FILE* generatePasswordFile = fopen(fileName, "w");
 
     if(generatePasswordFile == NULL){
@@ -34,7 +36,7 @@ void savePassword(char* str){
 
     fputs(str, generatePasswordFile);
     fclose(generatePasswordFile);
-    printf("Password saved successfully to %s\n", fileName);
+    printf("Password saved successfully to: \"%s\"\n", fileName);
 
     free(fileName);
 }
